@@ -12,6 +12,34 @@
     <artifactId>distributedExercise01</artifactId>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.baomidou</groupId>-->
+<!--            <artifactId>mybatis-plus-generator</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;模板类型 beetl&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.ibeetl</groupId>-->
+<!--            <artifactId>beetl</artifactId>-->
+<!--            <version>3.1.8.RELEASE</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;模板类型 freemarker&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.freemarker</groupId>-->
+<!--            <artifactId>freemarker</artifactId>-->
+<!--            <version>2.3.30</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;模板类型 velocity&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.velocity</groupId>-->
+<!--            <artifactId>velocity-engine-core</artifactId>-->
+<!--            <version>2.2</version>-->
+<!--        </dependency>-->
+        <!--自动刷新页面-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -59,6 +87,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+
         </dependency>
 
         <!--引入-thymeleaf-->
@@ -72,7 +101,6 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
         </dependency>
-
         <!--spring boot 2.2.2-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,6 +120,12 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>3.3.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

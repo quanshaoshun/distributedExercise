@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <!-- href="../../static/asserts/css/bootstrap.min.css" -->
+    <link th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!-- href="../../static/asserts/css/dashboard.css" -->
+    <link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+<!--引入抽取的topbar-->
+<!--模板名：会使用thymeleaf的前后缀配置规则进行解析-->
+<div th:replace="commons/bar::topbar"></div>
+<div class="container-fluid">
+    <div class="row">
+        <!--引入sidbar-->
+        <div th:replace="commons/bar::#sidebar(activeUri='guestEmps')"></div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/guestEmp}" method="post">
+                <!-- 发送put请求 修改员工数据-->
+                <!--
+                    1.Springmvc中配置HiddenHttpMethodFilter;(springMVC自动配置的)
+                    2.页面创建员工post表单
+                    3.创建一个input项,name ="_method",值就是我们指定的请求的方式
+                -->
+                <input type="hidden" name="_method" value="put" th:if="${emp!=null}"/>
+                <input type="hidden" name="gtId" th:if="${emp!=null}" th:value="${emp.gtId}"/>
+                <div class="form-row">
+                    <label class="col-form-label">客人姓名</label>
+                    <div class="form-group col-md-6">
+                        <input th:value="${emp!=null}?${emp.gtName}" name="gtName" type="text" class="form-control"
+                        >
+                    </div>
+                    <label class="col-form-label">客人类型</label>
+                    <div class="form-group col-md-3">
+                        <select class="form-control" name="gtYpe">
+                            <option th:selected="${emp!=null}?${'普通客户' == emp.gtYpe}" th:value="普通客户"
+                                    th:text="普通客户"></option>
+                            <option th:selected="${emp!=null}?${'vip客户' == emp.gtYpe}" th:value="vip客户"
+                                    th:text="vip客户"></option>
+                            <option th:selected="${emp!=null}?${'黄金vip客户' == emp.gtYpe}" th:value="黄金vip客户"
+                                    th:text="黄金vip客户"></option>
+                            <option th:selected="${emp!=null}?${'钻石vip客户' == emp.gtYpe}" th:value="钻石vip客户"
+                                    th:text="钻石vip客户"></option>
+                            <option th:selected="${emp!=null}?${'至尊vip客户' == emp.gtYpe}" th:value="至尊vip客户"
+                                    th:text="至尊vip客户"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="col-form-label">客人证件类别</label>
+                    <div class="form-group col-md-3">
+                        <select class="form-control" name="gtCadcatalog">
+                            <option th:selected="${emp!=null}?${'身份证' == emp.gtCadcatalog}" th:value="身份证"
+                                    th:text="身份证"></option>
+                            <option th:selected="${emp!=null}?${'军人证' == emp.gtCadcatalog}" th:value="军人证"
+                                    th:text="军人证"></option>
+                            <option th:selected="${emp!=null}?${'驾驶证' == emp.gtCadcatalog}" th:value="驾驶证"
+                                    th:text="驾驶证"></option>
+                        </select>
+                    </div>
+                    <label class="col-form-label">客人证件号码</label>
+                    <div class="form-group col-md-2">
+                        <input th:value="${emp!=null}?${emp.gtCardId}" name="gtCardId" type="text" class="form-control"
+                               placeholder="无">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="col-form-label">国籍</label>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" name="gtCountry">
+                            <option th:selected="${emp!=null}?${'中国' == emp.gtCountry}" th:value="中国"
+                                    th:text="中国"></option>
+                            <option th:selected="${emp!=null}?${'美国' == emp.gtCountry}" th:value="美国"
+                                    th:text="美国"></option>
+                            <option th:selected="${emp!=null}?${'巴基斯坦' == emp.gtCountry}" th:value="巴基斯坦"
+                                    th:text="巴基斯坦"></option>
+                            <option th:selected="${emp!=null}?${'泰国' == emp.gtCountry}" th:value="泰国"
+                                    th:text="泰国"></option>
+                            <option th:selected="${emp!=null}?${'日本' == emp.gtCountry}" th:value="日本"
+                                    th:text="日本"></option>
+                            <option th:selected="${emp!=null}?${'德国' == emp.gtCountry}" th:value="德国"
+                                    th:text="德国"></option>
+                            <option th:selected="${emp!=null}?${'俄罗斯' == emp.gtCountry}" th:value="俄罗斯"
+                                    th:text="俄罗斯"></option>
+                        </select>
+                    </div>
+                    <label class=" col-form-label">地址</label>
+                    <div class="form-group row">
+                        <div class="form-group col-md-4">
+                            <input th:value="${emp!=null}?${emp.gtAddress}"name="gtAddress" type="text" class="form-control" placeholder="无">
+                        </div>
+                        <label class="col-sm-2 col-form-label">折</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="col-form-label">邮编</label>
+                    <div class="form-group col-md-4">
+                        <input th:value="${emp!=null}?${emp.gtZip}"name="gtZip" type="text" class="form-control" placeholder="0000">
+                    </div>
+                    <label class="col-form-label">email地址</label>
+                    <div class="form-group col-md-5">
+                        <input th:value="${emp!=null}?${emp.gtEmail}"name="gtEmail" type="text" class="form-control" placeholder="无">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="col-form-label">公司</label>
+                    <div class="form-group col-md-4">
+                        <input th:value="${emp!=null}?${emp.gtCompany}"name="gtCompany" type="text" class="form-control" placeholder="0000">
+                    </div>
+                    <label class="col-form-label">固定电话</label>
+                    <div class="form-group col-md-5">
+                        <input th:value="${emp!=null}?${emp.gtTelphone}"name="gtTelphone" type="text" class="form-control" placeholder="无">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="col-form-label">性别</label>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" name="gtGender">
+                            <option th:selected="${emp!=null}?${'男' == emp.gtGender}"th:value="男" th:text="男"></option>
+                            <option th:selected="${emp!=null}?${'女' == emp.gtGender}"th:value="女" th:text="女"></option>
+                        </select>
+                    </div>
+                    <label class="col-form-label">手机号码</label>
+                    <div class="form-group col-md-6">
+                        <input th:value="${emp!=null}?${emp.gtMobile}"name="gtMobile" type="text" class="form-control" placeholder="无">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">修改</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="../../static/asserts/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="../../static/asserts/js/popper.min.js"></script>
+<script type="text/javascript" src="../../static/asserts/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="../../static/asserts/js/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="../../static/asserts/js/Chart.min.js"></script>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                borderWidth: 4,
+                pointBackgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>
