@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="worklogAdd.html">新增工作日志</a>
+<table border="1">
+    <th>id</th>
+    <th>年份</th>
+    <th>月份</th>
+    <th>日期</th>
+    <th>日志标题</th>
+    <th>日志内容</th>
+    <th>记录时间</th>
+
+    <th>操作</th>
+
+    <tr th:each="worklog,memberStat:${worklogList}">
+        <td th:text="${worklog.getId()}"/>
+        <td th:text="${worklog.getYear()}"/>
+        <td th:text="${worklog.getMonth()}"/>
+        <td th:text="${worklog.getDay()}"/>
+        <td th:text="${worklog.getTitle()}"/>
+        <td th:text="${worklog.getDescription()}"/>
+        <td th:text="${worklog.getLogtime()}"/>
+        <td><a th:href="@{'worklogDelete.do?id='+${worklog.getId()}}">删除|</a><a th:href="@{'worklogEdit1.do?id='+${worklog.getId()}}">修改</a></td>
+    </tr>
+</table>
+</body>
+</html>

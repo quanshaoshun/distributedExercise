@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="smsAdd.html"> 发送消息</a>
+<table border="1">
+    <th>id</th>
+    <th>发送者</th>
+    <th>消息内容</th>
+    <th>是否阅读</th>
+
+    <th>操作</th>
+
+    <tr th:each="sws,memberStat:${swsList}">
+        <td th:text="${sws.getId()}"/>
+        <td th:text="${sws.getSender()}"/>
+        <td th:text="${sws.getMessage()}"/>
+        <td th:text="${sws.getIsRead()}"/>
+
+        <td><a th:href="@{'swsEdit.do?id='+${sws.getId()}}">设置已读|</a><a th:href="@{'swsDelete.do?id='+${sws.getId()}}">删除</a></td>
+
+    </tr>
+</table>
+</body>
+</html>

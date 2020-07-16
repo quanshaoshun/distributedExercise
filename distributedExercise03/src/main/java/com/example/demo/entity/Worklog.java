@@ -2,6 +2,8 @@ package com.example.demo.entity;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.EqualsAndHashCode;
 
@@ -17,7 +19,7 @@ import lombok.EqualsAndHashCode;
 @TableName("worklog")
 public class Worklog implements Serializable {
 
-
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     private String username;

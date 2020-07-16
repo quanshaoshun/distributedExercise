@@ -28,7 +28,7 @@
             <td th:text="${contactperson.getCompany()}"/>
             <td th:text="${contactperson.getAddress()}"/>
             <td th:text="${contactperson.getPostcode()}"/>
-            <td><a th:href="@{'delete.do?id='+${contactperson.getId()}}">删除</a><a th:href="@{'edit1.do?id='+${contactperson.getId()}}">修改</a></td>
+            <td><a th:href="@{'delete.do?id='+${contactperson.getId()}}">删除|</a><a th:href="@{'edit1.do?id='+${contactperson.getId()}}">修改</a></td>
 
         </tr>
     </table>

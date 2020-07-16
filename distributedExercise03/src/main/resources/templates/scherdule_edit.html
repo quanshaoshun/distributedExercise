@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改日程安排</title>
+</head>
+<body>
+<form method="post" action="scherduleEdit.do">
+    <input name="id" style="display: none" th:value="${scherdule.getId()}">
+    年份<input name="years" th:value="${scherdule.getYears()}">
+    月份<input name="month" th:value="${scherdule.getMonth()}">
+    日期<input name="date" th:value="${scherdule.getDate()}">
+    安排内容<input name="arrangecontent" th:value="${scherdule.getArrangecontent()}">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

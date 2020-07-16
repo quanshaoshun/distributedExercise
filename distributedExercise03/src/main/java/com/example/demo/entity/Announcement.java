@@ -18,7 +18,7 @@ import lombok.EqualsAndHashCode;
  * @since 2020-07-09
  */
 @EqualsAndHashCode(callSuper = false)
-@TableName("anncoucement")
+@TableName("announcement")
 public class Announcement implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)

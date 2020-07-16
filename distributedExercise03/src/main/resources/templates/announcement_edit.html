@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/annEdit.do">
+    <input name="id" style="display: none" th:value="${announcement.getId()}">
+    公告填写人<input name="fillin" th:value="${announcement.getFillin()}">
+    公告标题<input name="title" th:value="${announcement.getTitle()}">
+    公告内容<input name="content" th:value="${announcement.getContent()}">
+    公告时间<input name="time" th:value="${announcement.getTime()}">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

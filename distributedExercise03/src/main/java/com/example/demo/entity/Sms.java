@@ -26,14 +26,14 @@ public class Sms implements Serializable {
 
     private String username;
 
-    private Integer sender;
+    private String sender;
 
-    private Integer message;
+    private String message;
 
-    private Integer sendtime;
+    private String sendtime;
 
     @TableField("isRead")
-    private String isRead;
+    private int isRead;
 
     public Integer getId() {
         return id;
@@ -51,35 +51,35 @@ public class Sms implements Serializable {
         this.username = username;
     }
 
-    public Integer getSender() {
+    public String getSender() {
         return sender;
     }
 
-    public void setSender(Integer sender) {
+    public void setSender(String sender) {
         this.sender = sender;
     }
 
-    public Integer getMessage() {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(Integer message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public Integer getSendtime() {
+    public String getSendtime() {
         return sendtime;
     }
 
-    public void setSendtime(Integer sendtime) {
+    public void setSendtime(String sendtime) {
         this.sendtime = sendtime;
     }
 
-    public String getIsRead() {
+    public int getIsRead() {
         return isRead;
     }
 
-    public void setIsRead(String isRead) {
+    public void setIsRead(int isRead) {
         this.isRead = isRead;
     }
 
@@ -88,9 +88,9 @@ public class Sms implements Serializable {
         return "Sms{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", sender=" + sender +
-                ", message=" + message +
-                ", sendtime=" + sendtime +
+                ", sender='" + sender + '\'' +
+                ", message='" + message + '\'' +
+                ", sendtime='" + sendtime + '\'' +
                 ", isRead='" + isRead + '\'' +
                 '}';
     }

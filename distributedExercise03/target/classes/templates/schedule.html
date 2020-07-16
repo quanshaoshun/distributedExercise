@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>日程安排</title>
+</head>
+<body>
+<a href="scheduleAdd.html">新增日程安排</a>
+<table border="1">
+    <th>id</th>
+    <th>年份</th>
+    <th>月份</th>
+    <th>日期</th>
+    <th>安排内容</th>
+    <th>操作</th>
+
+    <tr th:each="schedule,memberStat:${scheduleList}">
+        <td th:text="${schedule.getId()}"/>
+        <td th:text="${schedule.getYears()}"/>
+        <td th:text="${schedule.getMonth()}"/>
+        <td th:text="${schedule.getDate()}"/>
+        <td th:text="${schedule.getArrangecontent()}"/>
+        <td><a th:href="@{'scheduleDelete.do?id='+${schedule.getId()}}">删除|</a><a th:href="@{'scheduleEdit1.do?id='+${schedule.getId()}}">修改</a></td>
+    </tr>
+
+</table>
+</body>
+</html>

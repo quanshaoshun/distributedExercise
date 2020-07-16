@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改工作日志</title>
+</head>
+<body>
+<form method="post" action="worklogEdit.do">
+    <input name="id" style="display: none" th:value="${worklog.getId()}">
+    年份<input name="year" th:value="${worklog.getYear()}">
+    月份<input name="month" th:value="${worklog.getMonth()}">
+    日期<input name="day" th:value="${worklog.getDay()}">
+    日志标题<input name="title" th:value="${worklog.getTitle()}">
+    日志内容<input name="description" th:value="${worklog.getDescription()}">
+    记录时间<input name="logtime" th:value="${worklog.getLogtime()}">
+
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
