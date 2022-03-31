@@ -40,7 +40,7 @@
     <bootstrap.version>4.0.0</bootstrap.version>
     <mybatis.plus.boot.starter.version>3.1.1</mybatis.plus.boot.starter.version>
     <druid.version>1.1.6</druid.version>
-    <spring-boot-starter-web.version>2.3.1.RELEASE</spring-boot-starter-web.version>
+    <spring-boot-starter-web.version>2.5.12</spring-boot-starter-web.version>
     <spring-boot-starter-test.version>2.3.1.RELEASE</spring-boot-starter-test.version>
 
   </properties>
